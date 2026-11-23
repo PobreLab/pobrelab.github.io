@@ -36,7 +36,7 @@
     body {
       min-height: 100vh;
       min-height: 100dvh;
-      background-color: "#a6acbb";
+      background-color: var(--bg-page);
       background-image:
         radial-gradient(circle at 20% 20%, rgba(34, 197, 94, 0.14), transparent 45%),
         radial-gradient(circle at 80% 80%, rgba(234, 179, 8, 0.1), transparent 45%),
@@ -201,6 +201,67 @@
       color: var(--green);
     }
 
+    /* Sobre nós */
+    .about-card {
+      max-width: 720px;
+      margin-top: 1.5rem;
+      text-align: left;
+    }
+
+    .about-card h2 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.25rem;
+    }
+
+    .about-card .tagline {
+      color: var(--yellow);
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .about-card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin: 1.75rem 0 0.75rem;
+      color: var(--green);
+    }
+
+    .about-card p,
+    .about-card li {
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+
+    .about-card p + p {
+      margin-top: 0.75rem;
+    }
+
+    .about-card ul,
+    .about-card ol {
+      padding-left: 1.25rem;
+      display: grid;
+      gap: 0.5rem;
+    }
+
+    .about-card strong {
+      color: var(--text-primary);
+    }
+
+    .about-card a {
+      color: var(--green);
+    }
+
+    .about-card blockquote {
+      margin-top: 1rem;
+      padding: 0.75rem 1rem;
+      border-left: 3px solid var(--yellow);
+      background: rgba(234, 179, 8, 0.06);
+      border-radius: 0 10px 10px 0;
+      color: var(--text-secondary);
+    }
+
     /* Rodapé simples */
     footer {
       margin-top: 1.75rem;
@@ -267,8 +328,42 @@
     </div>
   </main>
 
+  <section class="notice-card about-card" id="sobre" aria-labelledby="sobre-titulo">
+    <h2 id="sobre-titulo">Sobre nós</h2>
+    <p class="tagline">Homelab de pobre, engenharia de rico. 🇧🇷🐕</p>
+
+    <p>O PobreLab junta gente que curte <strong>homelab</strong> mas não tem dinheiro pra rack, servidor enterprise e switch gerenciável. Aqui o datacenter fica em cima da cadeira de plástico. O servidor principal é aquele notebook com a tela quebrada que roda 24/7.</p>
+    <p>O objetivo é mostrar que dá pra aprender e brincar com infraestrutura de verdade gastando pouco. Também é para ajudar quem já tem um setup a melhorar o que tem, sem precisar trocar tudo.</p>
+
+    <h3>🔧 O que você encontra aqui</h3>
+    <ul>
+      <li><strong>Guias e receitas</strong> pra transformar hardware velho em servidor: notebooks, desktops antigos, TV box, Raspberry Pi e o que mais aparecer.</li>
+      <li><strong>Configurações prontas</strong> de serviços self-hosted: mídia, backup, DNS, VPN, monitoramento, automação residencial.</li>
+      <li><strong>Soluções engenhosas</strong> pros problemas de sempre: energia, refrigeração, barulho, armazenamento barato e internet residencial com CGNAT.</li>
+      <li><strong>Projetos de melhoria</strong> pra quem já tem um homelab e quer evoluir sem gastar muito.</li>
+    </ul>
+
+    <h3>💡 Princípios</h3>
+    <ul>
+      <li>♻️ <strong>Reaproveitar antes de comprar:</strong> o melhor hardware é o que já está na gaveta.</li>
+      <li>💸 <strong>Custo em real, não em dólar:</strong> toda solução considera preço e disponibilidade no Brasil.</li>
+      <li>🧠 <strong>Gambiarra documentada vira engenharia:</strong> se funciona e está bem explicado, tem lugar aqui.</li>
+      <li>🤝 <strong>Ninguém nasce sabendo:</strong> pergunta de iniciante é bem-vinda.</li>
+    </ul>
+
+    <h3>🚀 Como participar</h3>
+    <ol>
+      <li><strong>Mostre seu setup:</strong> abra uma discussão com fotos, hardware e o que roda nele.</li>
+      <li><strong>Contribua com um guia ou config:</strong> abra um PR em um dos repositórios ou proponha um novo.</li>
+      <li><strong>Ajude alguém:</strong> responda dúvidas nas issues e discussões.</li>
+      <li><strong>Dê uma ⭐</strong> nos projetos que te ajudaram. Ajuda a comunidade a crescer.</li>
+    </ol>
+
+    <blockquote>Quer criar um repositório dentro da organização? Abra uma issue no <a href="https://github.com/pobrelab">GitHub do PobreLab</a> contando a ideia que a gente conversa.</blockquote>
+  </section>
+
   <footer>
-    PobreLab &bull; Comunidade
+    Feito com notebook velho, café e muito ❤️ no Brasil.
   </footer>
 
 </body>
