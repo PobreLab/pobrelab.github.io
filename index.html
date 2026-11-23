@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PobreLab — Em breve</title>
+  <meta name="description" content="Em breve teremos novidades da comunidade PobreLab.">
+
+  <!-- Favicon oficial PobreLab -->
+  <link rel="icon" type="image/png" href="image_5c3fc5.png">
+  <link rel="apple-touch-icon" href="image_5c3fc5.png">
+
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-page: #090d16;
+      --bg-card: rgba(13, 17, 23, 0.85);
+      --bg-terminal: #05080f;
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --green: #22c55e;
+      --yellow: #eab308;
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      min-height: 100dvh;
+      background-color: var(--bg-page);
+      background-image:
+        radial-gradient(circle at 20% 20%, rgba(34, 197, 94, 0.14), transparent 45%),
+        radial-gradient(circle at 80% 80%, rgba(234, 179, 8, 0.1), transparent 45%),
+        linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 36px 36px, 36px 36px;
+      color: var(--text-primary);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Card centralizado */
+    .notice-card {
+      width: 100%;
+      max-width: 500px;
+      background: var(--bg-card);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--border-subtle);
+      border-radius: 24px;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      box-shadow:
+        0 25px 50px -12px rgba(0, 0, 0, 0.65),
+        0 0 40px -15px rgba(34, 197, 94, 0.25);
+    }
+
+    /* Container circular do Logo */
+    .logo-wrapper {
+      position: relative;
+      width: 148px;
+      height: 148px;
+      margin: 0 auto 1.5rem;
+      border-radius: 50%;
+      padding: 4px;
+      background: linear-gradient(135deg, var(--green), var(--yellow));
+      box-shadow:
+        0 0 32px rgba(34, 197, 94, 0.35),
+        0 0 18px rgba(234, 179, 8, 0.2);
+    }
+
+    .logo-img,
+    .logo-fallback {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      background-color: #0d1117;
+      border: 3px solid var(--bg-page);
+    }
+
+    .logo-fallback {
+      display: none;
+    }
+
+    /* Badge de status */
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.375rem 0.875rem;
+      border-radius: 9999px;
+      background: rgba(34, 197, 94, 0.1);
+      border: 1px solid rgba(34, 197, 94, 0.28);
+      color: var(--green);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      margin-bottom: 1.25rem;
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: var(--green);
+      box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+      }
+      70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 7px rgba(34, 197, 94, 0);
+      }
+      100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+      }
+    }
+
+    /* Título e subtítulo */
+    h1 {
+      font-size: clamp(2rem, 5vw, 2.5rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--text-primary);
+      margin-bottom: 0.625rem;
+    }
+
+    .subtitle {
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+      margin-bottom: 1.75rem;
+    }
+
+    /* Bloco estilo terminal minimalista */
+    .terminal-box {
+      background: var(--bg-terminal);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 1rem 1.125rem;
+      text-align: left;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8125rem;
+      line-height: 1.6;
+    }
+
+    .terminal-header {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.625rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+    }
+    .dot-red { background: #ef4444; }
+    .dot-yellow { background: #eab308; }
+    .dot-green { background: #22c55e; }
+
+    .cmd-line {
+      color: #e2e8f0;
+      margin-bottom: 0.375rem;
+      word-break: break-word;
+    }
+
+    .cmd-prompt {
+      color: var(--yellow);
+      font-weight: 600;
+      margin-right: 0.4rem;
+    }
+
+    .cmd-output {
+      color: var(--green);
+    }
+
+    /* Rodapé simples */
+    footer {
+      margin-top: 1.75rem;
+      font-size: 0.8125rem;
+      color: #64748b;
+      text-align: center;
+      font-weight: 500;
+    }
+
+    @media (max-width: 480px) {
+      .notice-card {
+        padding: 2rem 1.35rem;
+        border-radius: 20px;
+      }
+      .logo-wrapper {
+        width: 124px;
+        height: 124px;
+      }
+      .terminal-box {
+        font-size: 0.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <main class="notice-card">
+    <!-- Logo circular PobreLab com fallback SVG temático do vira-lata caramelo dev -->
+    <div class="logo-wrapper">
+      <img
+        src="image_5c3fc5.png"
+        alt="Logo PobreLab"
+        class="logo-img"
+        onerror="this.style.display='none'; document.getElementById('svg-fallback').style.display='block';"
+      >
+      <svg
+        id="svg-fallback"
+        class="logo-fallback"
+        viewBox="0 0 160 160"
+        xmlns="http://www.w3.org/2000/svg"
+        role="img"
+        aria-label="Logo PobreLab"
+      >
+        <!-- Fundo bandeira estilizada -->
+        <circle cx="80" cy="80" r="80" fill="#009c3b" />
+        <polygon points="80,14 146,80 80,146 14,80" fill="#ffdf00" />
+        <circle cx="80" cy="80" r="34" fill="#002776" />
+        <path d="M48 74 Q80 64 112 74" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" />
+
+        <!-- Mini Rack e Notebook Terminal à direita -->
+        <rect x="86" y="96" width="44" height="34" rx="4" fill="#1e293b" stroke="#0f172a" stroke-width="2" />
+        <circle cx="122" cy="104" r="2" fill="#22c55e" />
+        <circle cx="122" cy="113" r="2" fill="#22c55e" />
+        <circle cx="122" cy="122" r="2" fill="#22c55e" />
+        <rect x="88" y="66" width="40" height="28" rx="4" fill="#334155" stroke="#0f172a" stroke-width="2" />
+        <rect x="92" y="70" width="32" height="20" rx="2" fill="#090d16" />
+        <path d="M97 76 L102 80 L97 84" fill="none" stroke="#22c55e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+        <line x1="105" y1="84" x2="112" y2="84" stroke="#22c55e" stroke-width="2.2" stroke-linecap="round" />
+
+        <!-- Vira-lata Caramelo Dev estilizado -->
+        <!-- Corpo e Bandana -->
+        <path d="M44 138 C44 108, 76 108, 76 138 Z" fill="#d9822b" />
+        <polygon points="48,104 72,104 60,122" fill="#ffffff" />
+        <circle cx="57" cy="109" r="2" fill="#22c55e" />
+        <circle cx="63" cy="109" r="2" fill="#eab308" />
+        <circle cx="60" cy="114" r="2" fill="#22c55e" />
+
+        <!-- Orelhas -->
+        <path d="M42 66 Q32 54 38 76 Z" fill="#b45309" />
+        <path d="M78 66 Q88 54 82 76 Z" fill="#b45309" />
+
+        <!-- Cabeça e Focinho -->
+        <circle cx="60" cy="80" r="21" fill="#e69138" />
+        <ellipse cx="60" cy="87" rx="10" ry="8" fill="#f6c28b" />
+        <ellipse cx="60" cy="83" rx="4" ry="3" fill="#1e293b" />
+        <!-- Olhos -->
+        <circle cx="52" cy="75" r="2.6" fill="#1e293b" />
+        <circle cx="68" cy="75" r="2.6" fill="#1e293b" />
+        <!-- Sorriso e Língua -->
+        <path d="M54 90 Q60 95 66 90" fill="none" stroke="#1e293b" stroke-width="2" stroke-linecap="round" />
+        <path d="M58 92 L58 96 A2 2 0 0 0 62 96 L62 92 Z" fill="#f43f5e" />
+      </svg>
+    </div>
+
+    <!-- Badge de status -->
+    <div class="status-badge">
+      <span class="pulse-dot" aria-hidden="true"></span>
+      <span>Em breve</span>
+    </div>
+
+    <!-- Título e subtítulo -->
+    <h1>PobreLab</h1>
+    <p class="subtitle">Em breve teremos novidades da comunidade.</p>
+
+    <!-- Terminal minimalista de status -->
+    <div class="terminal-box" role="region" aria-label="Status do servidor PobreLab">
+      <div class="terminal-header" aria-hidden="true">
+        <span class="dot dot-red"></span>
+        <span class="dot dot-yellow"></span>
+        <span class="dot dot-green"></span>
+      </div>
+      <div class="cmd-line">
+        <span class="cmd-prompt">$</span>status --community pobrelab
+      </div>
+      <div class="cmd-output">
+        Preparando o servidor, o café e os próximos conteúdos. Voltamos em breve!
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    PobreLab &bull; Comunidade
+  </footer>
+
+</body>
+</html>
