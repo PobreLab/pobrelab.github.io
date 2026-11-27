@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,293 +14,20 @@
   <!-- Google Fonts: Inter & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+    rel="stylesheet">
 
-  <style>
-    :root {
-      --bg-page: #090d16;
-      --bg-card: rgba(13, 17, 23, 0.85);
-      --bg-terminal: #05080f;
-      --border-subtle: rgba(255, 255, 255, 0.08);
-      --green: #22c55e;
-      --yellow: #eab308;
-      --text-primary: #f8fafc;
-      --text-secondary: #94a3b8;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      min-height: 100vh;
-      min-height: 100dvh;
-      background-color: var(--bg-page);
-      background-image:
-        radial-gradient(circle at 20% 20%, rgba(34, 197, 94, 0.14), transparent 45%),
-        radial-gradient(circle at 80% 80%, rgba(234, 179, 8, 0.1), transparent 45%),
-        linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
-      background-size: 100% 100%, 100% 100%, 36px 36px, 36px 36px;
-      color: var(--text-primary);
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 1.5rem;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    /* Card centralizado */
-    .notice-card {
-      width: 100%;
-      max-width: 500px;
-      background: var(--bg-card);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border: 1px solid var(--border-subtle);
-      border-radius: 24px;
-      padding: 2.5rem 2rem;
-      text-align: center;
-      box-shadow:
-        0 25px 50px -12px rgba(0, 0, 0, 0.65),
-        0 0 40px -15px rgba(34, 197, 94, 0.25);
-    }
-
-    /* Container circular do Logo */
-    .logo-wrapper {
-      position: relative;
-      width: 148px;
-      height: 148px;
-      margin: 0 auto 1.5rem;
-      border-radius: 50%;
-      padding: 4px;
-      background: linear-gradient(135deg, var(--green), var(--yellow));
-      box-shadow:
-        0 0 32px rgba(34, 197, 94, 0.35),
-        0 0 18px rgba(234, 179, 8, 0.2);
-    }
-
-    .logo-img,
-    .logo-fallback {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      object-fit: cover;
-      display: block;
-      background-color: #0d1117;
-      border: 3px solid var(--bg-page);
-    }
-
-    .logo-fallback {
-      display: none;
-    }
-
-    /* Badge de status */
-    .status-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.375rem 0.875rem;
-      border-radius: 9999px;
-      background: rgba(34, 197, 94, 0.1);
-      border: 1px solid rgba(34, 197, 94, 0.28);
-      color: var(--green);
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.02em;
-      margin-bottom: 1.25rem;
-    }
-
-    .pulse-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background-color: var(--green);
-      box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0% {
-        transform: scale(0.95);
-        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
-      }
-      70% {
-        transform: scale(1);
-        box-shadow: 0 0 0 7px rgba(34, 197, 94, 0);
-      }
-      100% {
-        transform: scale(0.95);
-        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
-      }
-    }
-
-    /* Título e subtítulo */
-    h1 {
-      font-size: clamp(2rem, 5vw, 2.5rem);
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      color: var(--text-primary);
-      margin-bottom: 0.625rem;
-    }
-
-    .subtitle {
-      font-size: 1.05rem;
-      line-height: 1.6;
-      color: var(--text-secondary);
-      margin-bottom: 1.75rem;
-    }
-
-    /* Bloco estilo terminal minimalista */
-    .terminal-box {
-      background: var(--bg-terminal);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 14px;
-      padding: 1rem 1.125rem;
-      text-align: left;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.8125rem;
-      line-height: 1.6;
-    }
-
-    .terminal-header {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      margin-bottom: 0.75rem;
-      padding-bottom: 0.625rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-    }
-
-    .dot {
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-    }
-    .dot-red { background: #ef4444; }
-    .dot-yellow { background: #eab308; }
-    .dot-green { background: #22c55e; }
-
-    .cmd-line {
-      color: #e2e8f0;
-      margin-bottom: 0.375rem;
-      word-break: break-word;
-    }
-
-    .cmd-prompt {
-      color: var(--yellow);
-      font-weight: 600;
-      margin-right: 0.4rem;
-    }
-
-    .cmd-output {
-      color: var(--green);
-    }
-
-    /* Sobre nós */
-    .about-card {
-      max-width: 720px;
-      margin-top: 1.5rem;
-      text-align: left;
-    }
-
-    .about-card h2 {
-      font-size: 1.6rem;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      margin-bottom: 0.25rem;
-    }
-
-    .about-card .tagline {
-      color: var(--yellow);
-      font-weight: 600;
-      margin-bottom: 1rem;
-    }
-
-    .about-card h3 {
-      font-size: 1.05rem;
-      font-weight: 700;
-      margin: 1.75rem 0 0.75rem;
-      color: var(--green);
-    }
-
-    .about-card p,
-    .about-card li {
-      color: var(--text-secondary);
-      line-height: 1.65;
-    }
-
-    .about-card p + p {
-      margin-top: 0.75rem;
-    }
-
-    .about-card ul,
-    .about-card ol {
-      padding-left: 1.25rem;
-      display: grid;
-      gap: 0.5rem;
-    }
-
-    .about-card strong {
-      color: var(--text-primary);
-    }
-
-    .about-card a {
-      color: var(--green);
-    }
-
-    .about-card blockquote {
-      margin-top: 1rem;
-      padding: 0.75rem 1rem;
-      border-left: 3px solid var(--yellow);
-      background: rgba(234, 179, 8, 0.06);
-      border-radius: 0 10px 10px 0;
-      color: var(--text-secondary);
-    }
-
-    /* Rodapé simples */
-    footer {
-      margin-top: 1.75rem;
-      font-size: 0.8125rem;
-      color: #64748b;
-      text-align: center;
-      font-weight: 500;
-    }
-
-    @media (max-width: 480px) {
-      .notice-card {
-        padding: 2rem 1.35rem;
-        border-radius: 20px;
-      }
-      .logo-wrapper {
-        width: 124px;
-        height: 124px;
-      }
-      .terminal-box {
-        font-size: 0.75rem;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
   <main class="notice-card">
     <!-- Logo circular PobreLab com fallback SVG temático do vira-lata caramelo dev -->
     <div class="logo-wrapper">
-      <img
-        src="image_5c3fc5.png"
-        alt="Logo PobreLab"
-        class="logo-img"
-        onerror="this.style.display='none'; document.getElementById('svg-fallback').style.display='block';"
-      >
-
-
-      
+      <img src="image_5c3fc5.png" alt="Logo PobreLab" class="logo-img"
+        onerror="this.style.display='none'; document.getElementById('svg-fallback').style.display='block';">
     </div>
 
     <!-- Badge de status -->
@@ -332,22 +60,30 @@
     <h2 id="sobre-titulo">Sobre nós</h2>
     <p class="tagline">Homelab de pobre, engenharia de rico. 🇧🇷🐕</p>
 
-    <p>O PobreLab junta gente que curte <strong>homelab</strong> mas não tem dinheiro pra rack, servidor enterprise e switch gerenciável. Aqui o datacenter fica em cima da cadeira de plástico. O servidor principal é aquele notebook com a tela quebrada que roda 24/7.</p>
-    <p>O objetivo é mostrar que dá pra aprender e brincar com infraestrutura de verdade gastando pouco. Também é para ajudar quem já tem um setup a melhorar o que tem, sem precisar trocar tudo.</p>
+    <p>O PobreLab junta gente que curte <strong>homelab</strong> mas não tem dinheiro pra rack, servidor enterprise e
+      switch gerenciável. Aqui o datacenter fica em cima da cadeira de plástico. O servidor principal é aquele notebook
+      com a tela quebrada que roda 24/7.</p>
+    <p>O objetivo é mostrar que dá pra aprender e brincar com infraestrutura de verdade gastando pouco. Também é para
+      ajudar quem já tem um setup a melhorar o que tem, sem precisar trocar tudo.</p>
 
     <h3>🔧 O que você encontra aqui</h3>
     <ul>
-      <li><strong>Guias e receitas</strong> pra transformar hardware velho em servidor: notebooks, desktops antigos, TV box, Raspberry Pi e o que mais aparecer.</li>
-      <li><strong>Configurações prontas</strong> de serviços self-hosted: mídia, backup, DNS, VPN, monitoramento, automação residencial.</li>
-      <li><strong>Soluções engenhosas</strong> pros problemas de sempre: energia, refrigeração, barulho, armazenamento barato e internet residencial com CGNAT.</li>
+      <li><strong>Guias e receitas</strong> pra transformar hardware velho em servidor: notebooks, desktops antigos, TV
+        box, Raspberry Pi e o que mais aparecer.</li>
+      <li><strong>Configurações prontas</strong> de serviços self-hosted: mídia, backup, DNS, VPN, monitoramento,
+        automação residencial.</li>
+      <li><strong>Soluções engenhosas</strong> pros problemas de sempre: energia, refrigeração, barulho, armazenamento
+        barato e internet residencial com CGNAT.</li>
       <li><strong>Projetos de melhoria</strong> pra quem já tem um homelab e quer evoluir sem gastar muito.</li>
     </ul>
 
     <h3>💡 Princípios</h3>
     <ul>
       <li>♻️ <strong>Reaproveitar antes de comprar:</strong> o melhor hardware é o que já está na gaveta.</li>
-      <li>💸 <strong>Custo em real, não em dólar:</strong> toda solução considera preço e disponibilidade no Brasil.</li>
-      <li>🧠 <strong>Gambiarra documentada vira engenharia:</strong> se funciona e está bem explicado, tem lugar aqui.</li>
+      <li>💸 <strong>Custo em real, não em dólar:</strong> toda solução considera preço e disponibilidade no Brasil.
+      </li>
+      <li>🧠 <strong>Gambiarra documentada vira engenharia:</strong> se funciona e está bem explicado, tem lugar aqui.
+      </li>
       <li>🤝 <strong>Ninguém nasce sabendo:</strong> pergunta de iniciante é bem-vinda.</li>
     </ul>
 
@@ -359,7 +95,8 @@
       <li><strong>Dê uma ⭐</strong> nos projetos que te ajudaram. Ajuda a comunidade a crescer.</li>
     </ol>
 
-    <blockquote>Quer criar um repositório dentro da organização? Abra uma issue no <a href="https://github.com/pobrelab">GitHub do PobreLab</a> contando a ideia que a gente conversa.</blockquote>
+    <blockquote>Quer criar um repositório dentro da organização? Abra uma issue no <a
+        href="https://github.com/pobrelab">GitHub do PobreLab</a> contando a ideia que a gente conversa.</blockquote>
   </section>
 
   <footer>
@@ -367,4 +104,5 @@
   </footer>
 
 </body>
+
 </html>
